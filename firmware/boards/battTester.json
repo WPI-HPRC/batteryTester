@@ -1,0 +1,25 @@
+{
+  "build": {
+    "core": "arduino",
+    "f_cpu": "48000000L",
+    "cpu": "cortex-m0",
+    "mcu": "samd21e15a",
+    "variant": "battTester"
+  },
+  "debug": {
+    "jlink_device": "ATSAMD21E15B",
+    "openocd_target": "at91samdXX"
+  },
+  "frameworks": ["arduino"],
+  "platform": "atmelsam",
+  "upload": {
+    "maximum_ram_size": 4096,
+    "maximum_size": 24576,
+    "offset_address": 8192,
+    "protocol": "sam-ba",
+    "use_1200bps_touch": true
+  },
+  "name": "Battery Tester Board",
+  "vendor": "WPI HPRC",
+  "url": "ndebruin.com"
+}

@@ -2704,6 +2704,7 @@
 		(property "Reference" "SW3"
 			(at 0 -3.75 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "eeccad89-6ac1-4565-a54c-bd56d5baea80")
 			(effects
 				(font
