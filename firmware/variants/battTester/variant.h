@@ -24,9 +24,6 @@
 
 // #include <Arduino.h>
 
-
-// #define __SAMD21E15B__
-
 /*----------------------------------------------------------------------------
  *        Definitions
  *----------------------------------------------------------------------------*/
@@ -65,7 +62,7 @@ extern "C"
 #define NUM_DIGITAL_PINS     (6u)
 #define NUM_ANALOG_INPUTS    (2u)
 #define NUM_ANALOG_OUTPUTS   (1u)
-#define analogInputToDigitalPin(p)  ((p < 6u) ? (p) + 14u : -1)
+#define analogInputToDigitalPin(p)  ((p < 2u) ? (p) + 5u : -1)
 
 #define digitalPinToPort(P)        ( &(PORT->Group[g_APinDescription[P].ulPort]) )
 #define digitalPinToBitMask(P)     ( 1 << g_APinDescription[P].ulPin )
@@ -85,28 +82,22 @@ extern "C"
 // #define digitalPinToTimer(P)
 
 // LEDs
-#define LED_BUILTIN (15ul)
+#define LED_BUILTIN (3ul)
 
 // Other Digital
-#define PIN_START            (14ul)
-#define PIN_VOLTAGE          (10ul)
-#define PIN_CURRENT          (11ul)
-static const uint8_t BTN_START = PIN_START;
-static const uint8_t BTN_VOLTAGE = PIN_VOLTAGE;
-static const uint8_t BTN_CURRENT = PIN_CURRENT;
+#define BTN_START            (0ul)
+#define BTN_VOLTAGE          (2ul)
+#define BTN_CURRENT          (1ul)
 
 /*
  * Analog pins
  */
-#define PIN_ISENSE           (4ul)
-#define PIN_VBATT            (5ul)
-#define PIN_DAC0             (2ul)
+#define ISENSE           (5ul)
+#define VBATT            (6ul)
+#define DAC0             (4ul)
 
-static const uint8_t A0 = PIN_ISENSE;
-static const uint8_t ISENSE = PIN_ISENSE;
-static const uint8_t VBATT  = PIN_VBATT;
+#define A0 ISENSE
 
-static const uint8_t DAC0   = PIN_DAC0;
 #define ADC_RESOLUTION		  12
 
 
@@ -121,8 +112,8 @@ static const uint8_t DAC0   = PIN_DAC0;
  */
 #define WIRE_INTERFACES_COUNT 1
 
-#define PIN_WIRE_SDA         (8u)
-#define PIN_WIRE_SCL         (9u)
+#define PIN_WIRE_SDA         (7u)
+#define PIN_WIRE_SCL         (8u)
 #define PERIPH_WIRE          sercom2
 #define WIRE_IT_HANDLER      SERCOM2_Handler
 
@@ -132,8 +123,12 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 /*
  * USB
  */
-#define PIN_USB_DM          (24ul)
-#define PIN_USB_DP          (25ul)
+#define PIN_USB_DM          (9ul)
+#define PIN_USB_DP          (10ul)
+
+#define PIN_SWCLK           (11ul)
+#define PIN_SWDIO           (12ul)
+
 
 /*
  * I2S Interfaces
@@ -180,7 +175,7 @@ extern SERCOM sercom3;
 #define SERIAL_PORT_USBVIRTUAL      Serial
 #define SERIAL_PORT_MONITOR         Serial
 // Serial has no physical pins broken out, so it's not listed as HARDWARE port
-#define SERIAL_PORT_HARDWARE        Serial1
-#define SERIAL_PORT_HARDWARE_OPEN   Serial1
+// #define SERIAL_PORT_HARDWARE        Serial1
+// #define SERIAL_PORT_HARDWARE_OPEN   Serial1
 
 #endif /* _VARIANT_BATT_TESTER_ */

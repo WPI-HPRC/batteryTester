@@ -2,22 +2,31 @@
   "build": {
     "core": "arduino",
     "f_cpu": "48000000L",
-    "cpu": "cortex-m0",
-    "mcu": "samd21e15a",
-    "variant": "battTester"
+    "cpu": "cortex-m0plus",
+    "mcu": "samd21e18a",
+    "system": "samd",
+    "variant": "battTester",
+    "extra_flags": "-DARM_MATH_CM0PLUS -D__SAMD21E18A__"
   },
   "debug": {
-    "jlink_device": "ATSAMD21E15B",
-    "openocd_target": "at91samdXX"
+    "jlink_device": "ATSAMD21E18",
+    "openocd_chipname": "at91samd21e18",
+    "openocd_target": "at91samdXX",
+    "svd_path": "ATSAMD21E18A.svd"
   },
   "frameworks": ["arduino"],
   "platform": "atmelsam",
   "upload": {
-    "maximum_ram_size": 4096,
-    "maximum_size": 24576,
-    "offset_address": 8192,
+    "disable_flushing": true,
+    "maximum_ram_size": 32768,
+    "maximum_size": 262144,
+    "native_usb": true,
+    "offset_address": "0x2000",
     "protocol": "sam-ba",
-    "use_1200bps_touch": true
+    "protocols": ["sam-ba", "blackmagic", "jlink", "atmel-ice", "stlink"],
+    "require_upload_port": true,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true
   },
   "name": "Battery Tester Board",
   "vendor": "WPI HPRC",
